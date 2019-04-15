@@ -1,43 +1,67 @@
 <template>
     <nav class="app-nav">
-        <ul>
-            <li>
-                <RouterLink to="/"> 
-                    Home
-                </RouterLink>
-                <RouterLink to="/about"> 
-                    About
-                </RouterLink>
+        <ul class="app-nav__list">
+            <li
+                v-for="(item, index) in navigation"
+                :key="index"
+                class="app-nav__list-item"
+            >
+                <router-link
+                    :to="item.to"
+                    :class="['app-nav__list-link', {
+                        'app-nav__list-link--inverted': inverted
+                    }]"
+                    exact-active-class="app-nav__list-link--active"
+                >
+                    {{ item.name }}
+                </router-link>
             </li>
         </ul>
-    </nav>
+  </nav>
 </template>
-
 <script>
 export default {
-name: 'AppNav'
+  name: 'AppNav',
+  props: {
+    navigation: {
+      type: Array,
+      required: true
+    },
+    inverted: {
+      type: [Boolean, String],
+      default: false
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-.app-nav {
-padding: 0;
-margin: 0;
-padding-bottom: 10px;
+    .app-nav {
+        &__list {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 15px 145px;
+            &-item {
+                padding: 0 15px;
+            }
 
-}
-.app-nav li{
-    list-style-type: none;
-    padding: 5px 0;
-}
+            &-link {
+                color: white;
+                font-size: 14px;
+                text-decoration: none;
+                text-transform: uppercase;
 
-.app-nav a{
-    color: rgb(139, 142, 145);
-    text-decoration: none;
-}
+                &--inverted {
+                    color: rgba(black, .87);
+                }
 
-.app-nav a:hover{
-     text-decoration: underline;
-     color: rgba(139, 142, 145, 0.493);
-}
+                &--active {
+                    text-decoration: underline;
+                    color: #37E9B8;
+                }
+            }
+        }
+    }
 </style>

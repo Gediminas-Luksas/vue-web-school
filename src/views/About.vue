@@ -1,5 +1,5 @@
 <template>
-    <h1>About me</h1>
+    <h1>{{ $route.meta.displayPageTitle }}</h1>
 </template>
 
 <script>

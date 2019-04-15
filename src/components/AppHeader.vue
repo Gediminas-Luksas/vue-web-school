@@ -1,9 +1,9 @@
 <template>
-	<div class="app-header-wrapper">
-		<slot/>
+<div class="app-header-wrapper">
+		<AppNav :navigation="navigation" />
 		<header class="app-header">
 			<div class="app-header__content">
-				<h1>Gediminas Lukšas</h1>
+				<h1>Vardas Pavarde</h1>
 				<h3>Portfolio</h3>
 			</div>
 		</header>
@@ -11,10 +11,29 @@
 </template>
 
 <script>
+import AppNav from '@/components/AppNav'
+import routes from '@/routes'
 export default {
 	name: 'AppHeader',
+	components: {
+		AppNav
+	},
+	computed: {
+		navigation () {
+			return routes
+				.filter(route => route.meta.displayName)
+				.map(route => ({
+					name: route.meta.displayName,
+					to: {
+						name: route.name
+					}
+				}))
+		}
+	}
 }
+
 </script>
+
 <style lang="scss">
 	.app-header-wrapper {
 		background-color:aqua;

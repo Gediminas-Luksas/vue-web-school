@@ -3,11 +3,21 @@ import About from '@/views/About'
 
 export default [
     {
-        path: '/',
-        component: Home
+       path: '/',
+       name: 'Home',
+    component: Home,
+    meta: {
+        displayName:'Home',
+        displayPageTitle: 'Projektai'
+        }
     },
     {
         path: '/about',
-        component: About
+        name: 'About',
+    component: About,
+    meta: {
+        displayName: 'About',
+        displayPageTitle: 'Apie mane'
+        }
     }
 ]

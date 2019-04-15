@@ -4,11 +4,10 @@ import routes from '@/routes'
 
 Vue.use(VueRouter)
 
-
 export const createRouter = () => {
-    const router = new VueRouter({
-        mode: 'history',
-        routes
-    })
-   return router
+  const router = new VueRouter({
+    mode: 'history',
+    routes
+  })
+  return router
 }
